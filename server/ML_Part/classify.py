@@ -1,12 +1,13 @@
 import numpy as np
 import pickle
 import json
+import sys
+import os
 
-# Import input_data from my_input.py
-from json_input import input_data
+file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'trained_model.sav')
 
 # loading the saved model
-loaded_model = pickle.load(open('C:/Users/user/Documents/GitHub/CampusNavigator/server/ML_Part/trained_model.sav', 'rb'))
+loaded_model = pickle.load(open(file_path, 'rb'))
 
 # creating a function for Prediction
 def make_prediction(Branch, Gender, tenth_percentage, twelfth_percentage, CGPA_Till_sixth, sixth_Sem_SGPA, Internship, Skills):
@@ -41,7 +42,7 @@ def make_prediction(Branch, Gender, tenth_percentage, twelfth_percentage, CGPA_T
 
     # make prediction and return result
     prediction = loaded_model.predict(input_data)
-    print(prediction)
+    # print("This is prediction",prediction)
 
     if (prediction[0] == 0):
       return 'The person is not placed'
@@ -51,7 +52,7 @@ def make_prediction(Branch, Gender, tenth_percentage, twelfth_percentage, CGPA_T
         
 if __name__ == '__main__':
     # Receive input data from the command line
-    input_data = input_data
+    input_data = json.loads(sys.argv[1])
 
     # Make a prediction
     prediction = make_prediction(input_data["Branch"], input_data["Gender"], input_data["tenth_percentage"], input_data["twelfth_percentage"], input_data["CGPA_Till_sixth"], input_data["sixth_Sem_SGPA"], input_data["Internship"], input_data["Skills"])
