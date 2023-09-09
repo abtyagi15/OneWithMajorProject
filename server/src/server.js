@@ -15,7 +15,7 @@ app.post("/predict", (req, res) => {
   // Get the input data from the request body 
   // const inputJson = JSON.stringify(req.body);
   const  data = req.body;
-
+ 
   const inputJson = JSON.stringify(data); // Replace with your input data
 
   console.log("This is sent by postman",data);
