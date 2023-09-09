@@ -51,7 +51,7 @@ def make_prediction(Branch, Gender, tenth_percentage, twelfth_percentage, CGPA_T
         
 if __name__ == '__main__':
     # Receive input data from the command line
-    input_data = json.loads(sys.argv[1])
+    input_data = input_data
 
     # Make a prediction
     prediction = make_prediction(input_data["Branch"], input_data["Gender"], input_data["tenth_percentage"], input_data["twelfth_percentage"], input_data["CGPA_Till_sixth"], input_data["sixth_Sem_SGPA"], input_data["Internship"], input_data["Skills"])
