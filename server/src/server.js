@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const { spawn } = require("child_process");
+require("dotenv").config();
+//database connection
+const dbConnect = require("./configuration/database");
+dbConnect();
 
 const filePath = path.join(__dirname, "/ML_Part/classify.py");
 
@@ -41,7 +45,7 @@ app.post("/predict", (req, res) => {
   });
 });
 
-const port = 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
