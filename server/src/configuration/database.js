@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-DATABASE_URL = process.env.DATABASE_URL;
+
+const dbOffline = 'mongodb://localhost:27017/campusnavigator';
+DATABASE_URL = process.env.DATABASE_URL || dbOffline;
 mongoose.set('strictQuery',true);
 const connectDB = () => {
     mongoose.connect(DATABASE_URL,{
